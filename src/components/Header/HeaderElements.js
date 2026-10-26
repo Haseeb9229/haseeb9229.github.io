@@ -1,38 +1,17 @@
 import { FaBars } from "react-icons/fa";
-import { Link as ScrollLink } from "react-scroll";
 import styled from "@emotion/styled";
 
 export const Nav = styled.nav`
-  background: transparent;
-  height: 100px;
+  height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 10;
-`;
-
-export const NavLink = styled(ScrollLink)`
-  color: rgb(119, 119, 121);
-  display: flex;
-  font-size: 1.2rem;
-  align-items: center;
-  height: 100%;
-  cursor: pointer;
-  &:hover {
-    color: #f6f6f6;
-  }
-`;
-export const Logo = styled('div')`
-  img {
-    width: 47px;
-    height: 47px;
-  }
 `;
 
 export const Bars = styled(FaBars)`
   display: none;
-  color: #fff;
-  font-size: 1.8rem;
+  color: #f6f1e8;
+  font-size: 1.45rem;
   cursor: pointer;
   @media screen and (max-width: 768px) {
     display: block;
@@ -42,11 +21,17 @@ export const Bars = styled(FaBars)`
 export const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  margin-right: -24px;
+  gap: 1.35rem;
 
-  .menu-item + .menu-item {
-    margin-left: 1rem;
+  a {
+    color: #d9d3c8;
+    font-size: 0.98rem;
   }
+
+  a:hover {
+    color: #fffaf3;
+  }
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -55,7 +40,6 @@ export const NavMenu = styled.div`
 export const NavBtn = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 24px;
 
   @media screen and (max-width: 768px) {
     display: none;

@@ -1,26 +1,30 @@
 import styled from "@emotion/styled";
 
-export const Card = styled.div`
+export const Card = styled.article`
   display: grid;
-  grid-gap: 2rem;
-  margin-bottom: 4rem;
-  grid-template-columns: 1fr;
-  padding-bottom: 2rem;
+  grid-template-columns: 0.9fr 1.1fr;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 18px 50px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px) saturate(1.4);
+  border-radius: 22px;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  @media (min-width: 992px) {
-    grid-template-columns: 1fr 1fr;
-    border-bottom: 0;
-    padding-bottom: 0;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
   }
 `;
 
 export const CardLeft = styled.div`
-  justify-self: center;
-  height: 100%;
+  min-height: 220px;
+  background: #1c2420;
+
   img {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
     object-fit: cover;
   }
 `;
@@ -29,57 +33,39 @@ export const CardRight = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  padding: 1.5rem 1.5rem 1.3rem;
 
-  h4 {
-    font-size: 1.5rem;
-    font-weight: 400;
+  h3 {
+    font-family: "Fraunces", serif;
+    font-size: 1.7rem;
+    font-weight: 560;
+    letter-spacing: -0.03em;
   }
 
   p {
-    font-weight: 400;
-    max-width: 95%;
-    margin-top: 10px;
-    margin-bottom: 1rem;
-    color: rgba(0, 0, 0, 0.815);
-    text-align: center;
-
-    @media (min-width: 992px) {
-      text-align: start;
-    }
-  }
-  @media (min-width: 992px) {
-    align-items: flex-start;
-    margin-top: 1rem;
+    margin-top: 0.55rem;
+    margin-bottom: 0.9rem;
+    line-height: 1.55;
+    color: #d5deea;
   }
 `;
 
 export const BtnGroup = styled.div`
-  height: 70px;
   display: flex;
-  align-items: center;
+  margin-top: 1rem;
 `;
 
 export const TechCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  @media (min-width: 992px) {
-    justify-content: flex-start;
-  }
+  gap: 0.4rem;
 `;
 
-export const TechCard = styled.div`
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  padding: 5px 10px;
-  margin: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.815);
-  cursor: default;
-  box-shadow: 0px 2px 5px rgba(160, 170, 180, 0.6);
+export const TechCard = styled.span`
+  border-radius: 999px;
+  background: rgba(125, 211, 252, 0.1);
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  padding: 0.28rem 0.65rem;
+  font-size: 0.84rem;
+  color: #e7eef8;
 `;

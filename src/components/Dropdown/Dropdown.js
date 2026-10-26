@@ -1,14 +1,15 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
 import styled from "@emotion/styled";
-import { Link as ScrollLink } from "react-scroll";
+import { profile } from "../../data/ProfileData";
 
 const SiderBar = styled.div`
-  background: #151418;
+  background: rgba(6, 10, 16, 0.72);
+  backdrop-filter: blur(24px) saturate(1.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
   position: fixed;
   height: 100%;
   width: 100%;
-  /* top: 0; */
   left: 0;
   z-index: 999;
   transition: 0.3s ease-in-out;
@@ -16,80 +17,68 @@ const SiderBar = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
+  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
+  pointer-events: ${({ isOpen }) => (isOpen ? "auto" : "none")};
   top: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
 `;
 
 const CloseIcon = styled(FaTimes)`
-  font-size: 2rem;
-  color: #fff;
+  font-size: 1.6rem;
+  color: #f6f1e8;
   position: absolute;
-  right: 2rem;
-  top: 2rem;
+  right: 1.4rem;
+  top: 1.4rem;
   cursor: pointer;
 `;
+
 export const NavMenu = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 
-  .menu-item + .menu-item {
-    margin-top: 2rem;
+  a {
+    color: #f6f1e8;
+    font-size: 1.7rem;
+    font-family: "Fraunces", serif;
   }
-`;
 
-export const NavLink = styled(ScrollLink)`
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.7rem;
+  a:hover {
+    color: #e7b79a;
+  }
 
-  &:hover {
-    color: rgb(119, 119, 121);
+  a + a {
+    margin-top: 1.6rem;
   }
 `;
 
 export const NavBtn = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 5rem;
-  font-size: 1.7rem;
+  margin-top: 2.4rem;
 `;
 
 function Dropdown({ isOpen, toggle }) {
   return (
-    <SiderBar isOpen={isOpen} onClick={toggle}>
+    <SiderBar isOpen={isOpen} onClick={toggle} aria-hidden={!isOpen}>
       <CloseIcon onClick={toggle} />
       <NavMenu>
-        <NavLink
-          onClick={toggle}
-          className="menu-item"
-          to="projects"
-        >
-          Projects
-        </NavLink>
-        <NavLink
-          onClick={toggle}
-          className="menu-item"
-          to="about"
-        >
+        <a href="#experience" onClick={toggle}>
+          Experience
+        </a>
+        <a href="#projects" onClick={toggle}>
+          Work
+        </a>
+        <a href="#about" onClick={toggle}>
           About
-        </NavLink>
-        <NavLink
-          onClick={toggle}
-          className="menu-item"
-          to="contact"
-        >
+        </a>
+        <a href="#contact" onClick={toggle}>
           Contact
-        </NavLink>
+        </a>
       </NavMenu>
       <NavBtn onClick={toggle}>
-        <a
-          className="btn PrimaryBtn"
-          href="https://linkedin.com/in/pedro-sales-muniz"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className="btn PrimaryBtn" href={profile.resume} target="_blank" rel="noopener noreferrer">
           Resume
         </a>
       </NavBtn>

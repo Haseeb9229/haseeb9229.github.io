@@ -1,116 +1,73 @@
 import React, { useState } from "react";
 import Dropdown from "../Dropdown/Dropdown";
 import Header from "../Header/Header";
-import {
-  HeroContainer,
-  HeroWrapper,
-  HeroLeft,
-  HeroRight,
-  Image,
-  ScrollDown,
-  ScrollLink,
-} from "./HeroElements";
-import { TypeAnimation } from 'react-type-animation';
-import ScrollAnimation from "react-animate-on-scroll";
+import { TypeAnimation } from "react-type-animation";
+import { profile } from "../../data/ProfileData";
 
 function Hero() {
   const [isOpen, setIsOpen] = useState(false);
-  const [showSubtitle, setShowSubtitle] = useState(false);
-  const [showScrollDown, setShowScrollDown] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
 
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
   return (
     <main>
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Header toggle={toggle} />
-      <HeroContainer>
-        <HeroWrapper>
-          <HeroLeft>
-            <ScrollAnimation animateIn="fadeIn" >
+      <section className="hero" id="top">
+        <div className="Container hero-grid">
+          <div>
+            <p className="eyebrow">{profile.title} · {profile.location}</p>
+            <h1>{profile.name}</h1>
+            <div className="role-swap">
               <TypeAnimation
-                cursor={false}
                 sequence={[
-                  'Hi, I\'m Haseeb Ahmed.',
-                  () => setShowSubtitle(true)
+                  "Senior software engineer.",
+                  1600,
+                  "Shopify app developer.",
+                  1600,
+                  "Laravel and ecommerce integrations.",
+                  1600,
                 ]}
-                speed={{ type: "keyStrokeDelayInMs", value: 150 }}
-                wrapper="h1"
-                repeat={0}
+                wrapper="span"
+                speed={45}
+                repeat={Infinity}
+                cursor
               />
-              {showSubtitle &&
-                <TypeAnimation
-                  cursor={true}
-                  sequence={[
-                    500,
-                    'A Full-Stack Developer.',
-                    1000,
-                    'A MCS graduate.',
-                    1000,
-                    'A problem solver.',
-                    1000,
-                    'An innovative thinker.',
-                    1000,
-                    'A....',
-                    1000,
-                    'A.... cool guy?',
-                    1000,
-                    "Ok...",
-                    1000,
-                    "Ok...  I'm running out of ideas...",
-                    1000,
-                    "Uhh...",
-                    1000,
-                    "Uhh... you can scroll down to see my projects now...",
-                    300,
-                    () => setShowScrollDown(true),
-                    1000,
-                    "Seriously, my projects are really cool, go check them out!",
-                    1000,
-                    "You're uh...",
-                    1000,
-                    "You're uh... still here?",
-                    1000,
-                    "Ok, this has been fun, but I'm gonna restart the loop now...",
-                    1000,
-                    "Or...",
-                    1000,
-                    "Or... I could scroll you by force! Muahaha!",
-                    1000,
-                    "See ya! :)",
-                    500,
-                  ]}
-                  speed={50}
-                  deletionSpeed={65}
-                  wrapper="h5"
-                  repeat={Infinity}
-                />
-              }
-            </ScrollAnimation>
-
-          </HeroLeft>
-          <HeroRight>
-            <ScrollAnimation animateIn="fadeIn">
-              <Image
-                src="/man-svgrepo-com.svg"
-                alt="man-svgrepo"
-              />
-            </ScrollAnimation>
-          </HeroRight>
-        </HeroWrapper>
-        {showScrollDown &&<ScrollAnimation animateIn="flipInX" offset={0}>
-        <ScrollDown to="projects" id="scrollDown">
-          <ScrollLink>
-            Scroll down
-            <img
-              src="/scroll-down.svg"
-              alt="scroll-down"
-            />
-          </ScrollLink>
-        </ScrollDown>
-        </ScrollAnimation>}
-      </HeroContainer>
+            </div>
+            <p className="lede">{profile.summary}</p>
+            <div className="hero-actions">
+              <a className="btn PrimaryBtn" href="#experience">
+                View experience
+              </a>
+              <a className="btn btn-ghost" href={`mailto:${profile.email}`}>
+                Email me
+              </a>
+            </div>
+          </div>
+          <aside className="hero-card">
+            <p>Now</p>
+            <h2>Software Engineer</h2>
+            <p>MAKTA Solutions · Feb 2026 — Present. Freelance Laravel work since Feb 2020.</p>
+            <div className="stat-row">
+              <div className="stat">
+                <strong>6+ yrs</strong>
+                <span>Backend and Shopify apps</span>
+              </div>
+              <div className="stat">
+                <strong>MCS</strong>
+                <span>Bahauddin Zakariya University</span>
+              </div>
+              <div className="stat">
+                <strong>Docker</strong>
+                <span>Laravel, PHP, Node.js</span>
+              </div>
+              <div className="stat">
+                <strong>Lahore</strong>
+                <span>Urdu and English</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,74 +1,64 @@
 import React from "react";
-import { stackList } from "../../data/ProjectData";
-import {
-  Image,
-  Technologies,
-  Tech,
-  TechImg,
-  TechName,
-  ContactWrapper,
-} from "./AboutElements";
-import ScrollAnimation from "react-animate-on-scroll";
+import { education, languages, profile, skillGroups } from "../../data/ProfileData";
+
 function About() {
   return (
-    <ContactWrapper id="about">
+    <section className="section" id="about">
       <div className="Container">
-        <div className="SectionTitle">About Me</div>
-        <div className="BigCard">
-          <ScrollAnimation animateIn="fadeInLeft">
-            <Image src="/man-svgrepo-com.svg" alt="man-svgrepo" />
-          </ScrollAnimation>
-          <div className="AboutBio">
-            <ScrollAnimation animateIn="fadeInLeft">
-              Hello! My name is <strong>Haseeb Ahmed Khan</strong>. I'm
-              originally from Pakistan and have been working as a developer for
-              the past 4.5 years, gaining valuable experience in backend
-              development, Shopify app creation, and full-stack web solutions.
-              Throughout my career, I’ve honed my problem-solving skills,
-              adaptability, and ability to build scalable applications.
-            </ScrollAnimation>
-
-            <br />
-            <br />
-
-            <ScrollAnimation animateIn="fadeInLeft">
-              My journey into technology began with a deep passion for coding
-              and logic-driven development. Over the years, I have worked
-              extensively with Laravel, Node.js, React, and MongoDB,
-              specializing in Shopify app development, API integrations, and
-              performance optimization. I have contributed to diverse projects,
-              including POS systems, bidding platforms, and automation tools,
-              helping businesses streamline their operations.
-            </ScrollAnimation>
-
-            <br />
-            <br />
-
-            <ScrollAnimation animateIn="fadeInLeft">
-              I thrive in collaborative environments, working with teams to
-              build impactful solutions. My focus remains on backend
-              engineering, Shopify ecosystem development, and scalable eCommerce
-              solutions. I look forward to exploring new challenges and
-              contributing to innovative projects in the tech world! 🚀
-              <div className="tagline2">
-                I have become confident using the following technologies:
-              </div>
-            </ScrollAnimation>
-
-            <Technologies>
-              {stackList.map((stack, index) => (
-                <ScrollAnimation animateIn="fadeInLeft" key={index}>
-                  <Tech key={index} className="tech">
-                    <TechImg src={stack.img} alt={stack.name} />
-                    <TechName>{stack.name}</TechName>
-                  </Tech>
-                </ScrollAnimation>
+        <p className="kicker">Profile</p>
+        <h2 className="SectionTitle">About</h2>
+        <div className="about-layout">
+          <article className="panel">
+            <p>
+              I am {profile.name}, a senior software engineer in {profile.location}.
+              The last 6+ years have gone into Laravel and PHP backends, Shopify
+              apps, and the APIs that keep ecommerce data in sync.
+            </p>
+            <p>
+              Current work at MAKTA Solutions covers UNAS and Shoprenter
+              integrations, promotions, and production releases. Before that I
+              led Shopify app teams at SwishTag and Creative Sprout Media, and
+              built accounting automation at Focal Software. Freelance Laravel
+              and Shopify work has run alongside those roles since 2020.
+            </p>
+            <div className="skill-grid">
+              {skillGroups.map((group) => (
+                <div className="skill-card" key={group.title}>
+                  <h3>{group.title}</h3>
+                  <div className="chips">
+                    {group.items.map((item) => (
+                      <span className="chip" key={item}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
-            </Technologies>
-          </div>
+            </div>
+          </article>
+          <aside className="panel">
+            <p className="kicker">Education</p>
+            <h3>{education.degree}</h3>
+            <p className="meta">
+              {education.school}
+              <br />
+              {education.dates}
+            </p>
+            <p>{education.detail}</p>
+            <p className="kicker" style={{ marginTop: "1.4rem" }}>
+              Languages
+            </p>
+            <div className="lang-row">
+              {languages.map((language) => (
+                <span className="chip" key={language}>
+                  {language}
+                </span>
+              ))}
+            </div>
+          </aside>
         </div>
       </div>
-    </ContactWrapper>
+    </section>
   );
 }
 
